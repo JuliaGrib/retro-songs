@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__info">
+                <div class="logo">
+                    <a href="#" class="logo__link">
+                        <img src="logo.png" alt="" class="logo__img">
+                    </a>
+                </div>
+                <div class="score">
+                    <p class="score_info">
+                        Score: 0
+                    </p>
+                </div>
+            </div>
+            <nav class="header__nav">
+                <ul class="header_list">
+                    <li class="header__elem  active">60's</li>
+                    <li class="header__elem">70's</li>
+                    <li class="header__elem">80's</li>
+                    <li class="header__elem">90's</li>
+                    <li class="header__elem">00's</li>
+                    <li class="header__elem">10's</li>
+                </ul>
+            </nav>
+        </header>
+        <div class="player__wrapper">
+            <div class="cover">
+                <img src="question.jpg" alt="" class="cover__img">
+            </div>
+            <div class="player">
+                <p class="title">
+                    What's song?
+                </p>
+                <div class="control">
+                    <img src="play.svg" alt="control" class="song__btn">
+                    <audio class="audio" src=""></audio>
+                    <div class="progress__container">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="range"><input type="range" name="" id="volume" min="0" max="100"></div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="variant">
+                <ul class="variant__list">
+                    <li class="variant__elem"></li>
+                    <li class="variant__elem"></li>
+                    <li class="variant__elem"></li>
+                    <li class="variant__elem"></li>
+                    <li class="variant__elem"></li>
+                    <li class="variant__elem"></li>
+                </ul>
+            </div>
+            <div class="choose">
+                <p class="choose__title">Choose song</p>
+                <div class="choose_player">
+                    <img src="question.jpg" alt="" class="choose__img">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="songs.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
