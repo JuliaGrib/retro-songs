@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -25,12 +26,10 @@
             </div>
             <nav class="header__nav">
                 <ul class="header_list">
-                    <li class="header__elem  active">60's</li>
+                    <li class="header__elem">60's</li>
                     <li class="header__elem">70's</li>
                     <li class="header__elem">80's</li>
                     <li class="header__elem">90's</li>
-                    <li class="header__elem">00's</li>
-                    <li class="header__elem">10's</li>
                 </ul>
             </nav>
         </header>
@@ -65,12 +64,29 @@
                 </ul>
             </div>
             <div class="choose">
-                <p class="choose__title">Choose song</p>
-                <div class="choose_player">
+                <p class="choose__title">Selected song..</p>
+                <div class="choose__info">
                     <img src="question.jpg" alt="" class="choose__img">
+                    <p class="choose__song-name">Song name</p>
+                </div>
+                <div class="choose__player">
+                    <div class="choose__control">
+                        <img src="noplay.svg" alt="control" class="choose__song__btn">
+                        <audio class="choose__audio" src=""></audio>
+                        <div class="choose__progress__container">
+                            <div class="choose__progress"></div>
+                        </div>
+                    </div>
+                    <div class="choose__range"><input type="range" name="" id="volume" min="0" max="100"></div>
+                </div>
+                <div class="choose__about">
+                    <p class="choose__text">About song...</p>
                 </div>
             </div>
         </div>
+        <button class="next">next</button>
+        <audio src="yes2.mp3" class="yes"></audio>
+        <audio src="no55.mp3" class="no"></audio>
     </div>
     <script src="songs.js"></script>
     <script src="script.js"></script>

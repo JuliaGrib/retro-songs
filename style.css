@@ -110,6 +110,14 @@ body {
     cursor: pointer;
 }
 
+.choose__song__btn {
+    margin: 0 20px 0 0;
+    max-width: 25px;
+    height: 25px;
+    cursor: pointer;
+    pointer-events: none;
+}
+
 .progress__container {
     width: 100%;
     height: 10px;
@@ -118,7 +126,7 @@ body {
     align-items: center;
     cursor: pointer;
 
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(109, 109, 109, 0.4);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(15.6px);
@@ -178,7 +186,7 @@ body {
 .variant__elem::before {
     content: '';
     position: absolute;
-    background-image: url(/nota.svg);
+    background-image: url(nota.svg);
     width: 14px;
     height: 18px;
     background-size: contain;
@@ -190,6 +198,7 @@ body {
 .default {
     text-decoration: line-through;
     color: rgb(96, 96, 96);
+    pointer-events: none;
 }
 .default:hover {
     color: rgb(96, 96, 96);
@@ -198,7 +207,7 @@ body {
 .default::before {
     content: '';
     position: absolute;
-    background-image: url(/no.svg);
+    background-image: url(no.svg);
     width: 14px;
     height: 18px;
     background-size: contain;
@@ -209,6 +218,7 @@ body {
 
 .win {
     color: rgba(0, 189, 76, 1);
+    pointer-events: none;
 }
 .win:hover {
     color: rgba(0, 189, 76, 1);
@@ -216,7 +226,7 @@ body {
 .win::before {
     content: '';
     position: absolute;
-    background-image: url(/yes.svg);
+    background-image: url(yes.svg);
     width: 14px;
     height: 18px;
     background-size: contain;
@@ -225,6 +235,21 @@ body {
 
 }
 
+.no-choose {
+    color: rgb(161 161 161);
+    pointer-events: none;
+}
+.no-choose::before {
+    content: '';
+    position: absolute;
+    background-image: url(no-choose.svg);
+    width: 14px;
+    height: 18px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: -1px;
+
+}
 
 .choose {
     
@@ -238,7 +263,14 @@ body {
     -webkit-backdrop-filter: blur(15.6px);
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
+
+.choose__info {
+    display: flex;
+    align-items:center;
+}
+
 .choose__title {
+    margin-bottom: 20px;
     font-family: 'Sono', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -249,6 +281,75 @@ body {
     height: 70px;
     border-radius: 16px;
 }
+.choose__song-name{
+    font-size: 14px;
+    margin: 0 0 0 10px;
+}
+
+.choose__player {
+    margin: 15px 0 0 0;
+}
+.choose__control {
+    display: flex;
+    align-items: center;
+}
+.choose__progress__container {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    background: rgba(109, 109, 109, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.6px);
+    -webkit-backdrop-filter: blur(15.6px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.choose__progress {
+    background-color:rgb(195, 127, 255);
+    border-radius: 5px;
+    height: 6px;
+    pointer-events: none;
+}
+
+.choose__range {
+    margin: 10px 0 0 0;
+}
+
+.choose__about {
+    margin: 15px 0 0 0;
+    overflow-y: scroll;
+    height: 92px;
+}
+.choose__about::-webkit-scrollbar { width: 0; }
+.choose__about  { 
+    -ms-overflow-style: none; 
+    overflow: -moz-scrollbars-none;
+}
+
+
+.next {
+
+    margin: 20px 0 0 0;
+    color: white;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    background-color:rgb(96, 96, 96);
+    pointer-events: none;
+}
+.next-active {
+    background-color: violet;
+    pointer-events: all;
+    cursor: pointer;
+}
+
 
 @media (max-width: 700px){
     .content {
