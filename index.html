@@ -39,16 +39,22 @@
             </div>
             <div class="player">
                 <p class="title">
-                    What's song?
+                    ***
                 </p>
                 <div class="control">
                     <img src="play.svg" alt="control" class="song__btn">
                     <audio class="audio" src=""></audio>
                     <div class="progress__container">
-                        <div class="progress"></div>
+                        <div class="progress__line"></div>
+                        <input type="range" name="" id="" class="progress" step="1" min="0" max="100" value="0">
                     </div>
+  
                 </div>
-                <div class="range"><input type="range" name="" id="volume" min="0" max="100"></div>
+                <div class="main__time">
+                    <p class="start"></p>
+                    <p class="end"></p>
+                </div>
+                <div class="range_wrapper"><input class="range" type="range" name="" id="volume" min="0" max="100"></div>
             </div>
         </div>
 
@@ -67,7 +73,7 @@
                 <p class="choose__title">Selected song..</p>
                 <div class="choose__info">
                     <img src="question.jpg" alt="" class="choose__img">
-                    <p class="choose__song-name">Song name</p>
+                    <p class="choose__song-name">Listen to the player <br>Choose a song</p>
                 </div>
                 <div class="choose__player">
                     <div class="choose__control">
@@ -77,19 +83,19 @@
                             <div class="choose__progress"></div>
                         </div>
                     </div>
-                    <div class="choose__range"><input type="range" name="" id="volume" min="0" max="100"></div>
+                    <div class="choose__range-wrapper"><input class="choose__range" type="range" name="" id="volume" min="0" max="100"></div>
                 </div>
                 <div class="choose__about">
                     <p class="choose__text">About song...</p>
                 </div>
             </div>
         </div>
-        <button class="next">next</button>
+        <button class="next">Next</button>
         <audio src="yes2.mp3" class="yes"></audio>
         <audio src="no55.mp3" class="no"></audio>
     </div>
     <script src="songs.js"></script>
-    <script src="script.js"></script>
+    <script type="module"  src="script.js"></script>
     
 </body>
 </html>

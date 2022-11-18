@@ -20,6 +20,8 @@ let question = 0;
 //Объявляем переменную случайного числа
 let randomNum;
 let score = 0;
+export default score;
+
 
 //запускаем работу
 function startGame(){
@@ -53,7 +55,7 @@ function makeStartSong(question) {
 }
 // функция по перезагрузке контента main
 function startMainSong(){
-    title.innerHTML = "What's song?";
+    title.innerHTML = "***";
     coverMain.src = 'question.jpg';
 }
 //Фукнция заполнения фото и названия при победе
@@ -94,14 +96,15 @@ variantElem.forEach(elem => {
         let chooseName = elem.innerHTML;
         showSongSidebar(chooseName);
         makeChooseSong(chooseName);
-        if(currentName === chooseName) {
+        if(currentName === chooseName && !(elem.classList.contains('win'))) {
             rightSong(chooseName);
             rightAnswer(elem);
         }
         else {
-            if(!(elem.classList.contains('default'))){
+            if(!(elem.classList.contains('default')) && !(elem.classList.contains('no-choose')) && !(elem.classList.contains('win'))){
                 vrongAnswer(elem);
             }
+            
         }
         
     })
@@ -196,22 +199,21 @@ nextBtn.addEventListener('click', () => {
     nextBtn.classList.remove('next-active');
     chooseControl.classList.remove('play');
     chooseProgress.style.width = '0px';
-    progress.style.width = '0px';
     startGame();
     startMainSong();
     startSideBar();
-
+    pauseSong();
 
     variantElem.forEach(elem => {
         elem.classList.remove('win');
         elem.classList.remove('default');
         elem.classList.remove('no-choose');
-    })
+    });
 })
 
 
 function startSideBar() {
-    sideabarSongName.innerHTML = 'Song name';
+    sideabarSongName.innerHTML = 'Listen to the player <br>Choose a song';
     sideabarCover.src = 'question.jpg';
     chooseText.innerHTML = 'About song';
     chooseAudio.src = '';
@@ -259,17 +261,41 @@ playBtn.addEventListener('click', () => {
     } else {
         playSong();
     }
+
 })
 
 //progress bar
 function updateProgress(e){
     const {duration, currentTime} = e.srcElement;
-    const progresPercent = (currentTime / duration) *100;
-    progress.style.width = `${progresPercent}%`;
+
+    let a = String(Math.round(currentTime));
+    if(a == '30'){
+        a = '0';
+        document.querySelector('.start').innerHTML = `00:0${a}`;
+    } else if (a.length == 2) {
+        document.querySelector('.start').innerHTML = `00:${Math.round(currentTime)}`;
+    } else if (a.length == 1){
+       
+        document.querySelector('.start').innerHTML = `00:0${a}`;
+    }
+    
+    document.querySelector('.end').innerHTML = Math.round(duration);
+    let progresPercent = (currentTime / duration) *100;
+    // console.log(progresPercent);
+    if(isNaN(progresPercent)){
+        progresPercent = 0;
+    } else if(progresPercent == 100) {
+        progresPercent = 0;
+        pauseSong();
+    }
+    // console.log(progresPercent);
+    progress.value = progresPercent;
+document.querySelector('.progress__line').style.width = `${(Math.round(progresPercent))}%`;
 
 }
 
 audio.addEventListener('timeupdate', updateProgress);
+
 
 //бегунок
 function setProgress(e){
@@ -353,3 +379,8 @@ function chooseSoundVolume() {
 }
 
 chooseVolume.oninput = chooseSoundVolume;
+
+
+const resultText = document.querySelector('.result__text ');
+
+resultText.innerHTML = `You scored ${score} points out of 30 possible.`
