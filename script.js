@@ -14,13 +14,18 @@ const sideabarCover = document.querySelector('.choose__img');
 const sideabarSongName = document.querySelector('.choose__song-name');
 const nextBtn = document.querySelector('.next');
 const yearsList = document.querySelectorAll('.header__elem');
+const wrapperMain = document.querySelector('.wrapper');
+const wrapperResult = document.querySelector('.wrapper__result');
+const resultText = document.querySelector('.result__text ');
+
+
 
 //Определяет номер вопроса
 let question = 0;
 //Объявляем переменную случайного числа
 let randomNum;
 let score = 0;
-export default score;
+
 
 
 //запускаем работу
@@ -199,16 +204,28 @@ nextBtn.addEventListener('click', () => {
     nextBtn.classList.remove('next-active');
     chooseControl.classList.remove('play');
     chooseProgress.style.width = '0px';
-    startGame();
-    startMainSong();
-    startSideBar();
-    pauseSong();
+    let last = yearsList.length;
+    if (question == last){
+        resultText.innerHTML = `You scored ${score} points out of 20 possible.`;
+        wrapperMain.classList.add('none');
+        wrapperResult.classList.add('block');
 
-    variantElem.forEach(elem => {
-        elem.classList.remove('win');
-        elem.classList.remove('default');
-        elem.classList.remove('no-choose');
-    });
+    }
+    else {
+        startGame();
+        startMainSong();
+        startSideBar();
+        pauseSong();
+    
+        variantElem.forEach(elem => {
+            elem.classList.remove('win');
+            elem.classList.remove('default');
+            elem.classList.remove('no-choose');
+        });
+    }
+
+
+
 })
 
 
@@ -381,6 +398,3 @@ function chooseSoundVolume() {
 chooseVolume.oninput = chooseSoundVolume;
 
 
-const resultText = document.querySelector('.result__text ');
-
-resultText.innerHTML = `You scored ${score} points out of 30 possible.`

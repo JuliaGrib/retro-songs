@@ -19,6 +19,7 @@ body {
 }
 
 .wrapper {
+
     padding: 20px;
     margin: 50px auto 0;
     max-width: 900px;
@@ -497,4 +498,61 @@ body {
     .choose__title {
         font-size: 16px;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* result */
+.wrapper__result {
+    display: none;
+    padding: 20px;
+    margin: 50px auto 0;
+    max-width: 900px;
+    
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.2px);
+    -webkit-backdrop-filter: blur(11.2px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.result__container {
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+
+    background: rgba(0, 0, 0);
+    border-radius: 16px;
+}
+
+.result__header {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.result__text {
+    font-size: 25px;
+
+}
+
+.result__img {
+    margin-top: 20px;
+    width: 250px;
+}
+
+.none {
+    display: none;
+}
+.block {
+    display: block;
 }
