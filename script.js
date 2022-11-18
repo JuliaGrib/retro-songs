@@ -14,9 +14,16 @@ const sideabarCover = document.querySelector('.choose__img');
 const sideabarSongName = document.querySelector('.choose__song-name');
 const nextBtn = document.querySelector('.next');
 const yearsList = document.querySelectorAll('.header__elem');
+const wrapperStart = document.querySelector('.wrapper__start');
+const btnStart = document.querySelector('.btn__start');
 const wrapperMain = document.querySelector('.wrapper');
 const wrapperResult = document.querySelector('.wrapper__result');
 const resultText = document.querySelector('.result__text ');
+
+btnStart.addEventListener('click', ()=> {
+    wrapperStart.classList.add('none');
+    wrapperMain.classList.add('block');
+})
 
 
 
@@ -207,6 +214,8 @@ nextBtn.addEventListener('click', () => {
     let last = yearsList.length;
     if (question == last){
         resultText.innerHTML = `You scored ${score} points out of 20 possible.`;
+
+        wrapperMain.classList.remove('block');
         wrapperMain.classList.add('none');
         wrapperResult.classList.add('block');
 
