@@ -7,7 +7,6 @@ body {
     background-position: initial;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 0 15px;
 }
 
 * {
@@ -49,7 +48,7 @@ body {
     display: flex;
     flex-direction: column;
 }
-.btn__start, .btn__result, .btn__gallery, .btn__about {
+.btn__start, .btn__result, .btn__gallery, .btn__about, .result__start {
     width: 250px;
     font-size: 20px;
     margin: 20px 0 0 0;
@@ -63,7 +62,7 @@ body {
     transition: 0.5s;
 }
 
-.btn__start:hover, .btn__result:hover, .btn__gallery:hover, .btn__about:hover {
+.btn__start:hover, .btn__result:hover, .btn__gallery:hover, .btn__about:hover, .result__start:hover {
     background-color: #e452e4;
 
 }
@@ -100,7 +99,10 @@ body {
 }
 
 .result__container {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding: 20px 20px 30px 20px;
     text-align: center;
 
     background: rgba(0, 0, 0);
@@ -119,7 +121,7 @@ body {
 
 .result__img {
     margin-top: 20px;
-    width: 250px;
+    width: 175px;
 }
 
 .backBtn {
@@ -146,6 +148,11 @@ body {
 
 
 .wrapper {
+    /* position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+
     padding: 20px;
     margin: 50px auto 0;
     max-width: 900px;
@@ -627,14 +634,57 @@ body {
 }
 
 
+.footer {
+    /* margin-top: 30px; */
+    padding: 10px 0;
+    /* position: absolute;
+    width: 100%;
+    bottom: -100px; */
+    background: rgba(0, 0, 0, 0.5);
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.2px);
+    -webkit-backdrop-filter: blur(11.2px);
+    
+}
+.footer__wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.github__img {
+    width: 60px;
+}
+
+
+.rs__img {
+    width: 120px;
+}
 
 
 
 
 
+.lang {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 90px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    backdrop-filter: blur(11.2px);
+    -webkit-backdrop-filter: blur(11.2px);
+}
 
-
-
+.ru, .en {
+    cursor: pointer;
+    
+}
 
 
 

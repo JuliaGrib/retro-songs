@@ -1,8 +1,17 @@
+
+
+
+
+
 let question;
 let score;
 let randomNum;
 
+// console.log( localStorage.getItem('scoreLocal') );
+
 //start
+// const test = document.createElement('div');
+// document.body.appendChild(test);
 const wrapperStart = document.createElement('div');
 const logoStart = document.createElement('img');
 const buttonsWrapper = document.createElement('div');
@@ -25,6 +34,8 @@ buttonResultMain.innerHTML = 'Result';
 buttonGalleryMain.innerHTML = 'Gallery';
 buttonAboutMain.innerHTML = 'About';
 
+
+
 //result
 const wrapperResult = document.createElement('div');
 const containerResult = document.createElement('div');
@@ -32,6 +43,7 @@ const headerResult = document.createElement('p');
 const textResult = document.createElement('p');
 const imgResult = document.createElement('img');
 const backBtn = document.createElement('button');
+const playResult = document.createElement('button');
 
 wrapperResult.classList.add('wrapper__result');
 containerResult.classList.add('result__container');
@@ -39,11 +51,13 @@ headerResult.classList.add('result__header');
 textResult.classList.add('result__text');
 imgResult.classList.add('result__img');
 backBtn.classList.add('backBtn');
+playResult.classList.add('result__start');
 
-imgResult.src = 'disco.gif';
+
 headerResult.innerHTML = 'Congratulations!';
 textResult.innerHTML = 'You scored 20 points out of 20 possible.';
 backBtn.innerHTML = 'Back';
+playResult.innerHTML = 'Play game';
 
 
 makeStart();
@@ -63,13 +77,47 @@ function delStart(){
 }
 
 function makeResult(){
+    let btn;
+    if((localStorage.getItem('scoreLocal')) == ''){
+        headerResult.innerHTML = '';
+        textResult.innerHTML = `You don't have any points.`;
+        imgResult.src = '';
+        backBtn.innerHTML = 'Back';
+        btn = 'play';
+                if((document.querySelector('.backBtn'))){
+            containerResult.removeChild(backBtn);
+        }
+    }
+    else if((localStorage.getItem('scoreLocal')) === '20'){
+        headerResult.innerHTML = 'Congratulations!';
+        textResult.innerHTML = `You have scored the maximum ${localStorage.getItem('scoreLocal')} points from 30 possible.`;
+        imgResult.src = 'disco.gif';
+        backBtn.innerHTML = 'Go to start menu';
+        btn = 'back';
+        if((document.querySelector('.result__start'))){
+            containerResult.removeChild(playResult);
+        }
+    }
+    else {
+        headerResult.innerHTML = 'Congratulations!';
+        textResult.innerHTML = `You scored ${localStorage.getItem('scoreLocal')} points out of 20 possible.`;
+        imgResult.src = 'disco.gif';
+        btn = 'play';
+        if((document.querySelector('.backBtn'))){
+            containerResult.removeChild(backBtn);
+        }
+    }
     document.body.appendChild(wrapperResult);
     wrapperResult.appendChild(containerResult);
     containerResult.appendChild(headerResult);
     containerResult.appendChild(textResult);
     containerResult.appendChild(imgResult);
     containerResult.appendChild(imgResult);
-    containerResult.appendChild(backBtn);
+    if(btn === 'play'){
+        containerResult.appendChild(playResult);
+    } else if(btn === 'back'){
+        containerResult.appendChild(backBtn);
+    }
 
 }
 
@@ -267,7 +315,7 @@ function makeGame() {
 
     wrapperMain.appendChild(nextBtn);
 
-
+    localStorage.setItem('scoreLocal', '');
     question = 0;
     score = 0;
     scoreInfoHeader.innerHTML = `Score: ${score}`;
@@ -372,7 +420,7 @@ function makeGame() {
         audio.currentTime = (clickX / width) * duration;
     }
 
-    // progressContainer.addEventListener('click', setProgress);
+    progressContainer.addEventListener('click', setProgress);
 
     //настройка звука
     function soundVolume() {
@@ -507,10 +555,9 @@ function makeGame() {
             nextBtn.removeEventListener('click', forNext);
             chooseAudio.removeEventListener('timeupdate', chooseUpdateProgress);
             chooseProgressContainer.removeEventListener('click', chooseSetProgress);
-            
-            // variantElem.forEach(elem => {
-            //     elem.removeEventListener('click', () => {});
-            // })
+            progressContainer.removeEventListener('click', setProgress);
+            localStorage.setItem('scoreLocal', score);
+
 
             delGame();
             startMainSong();
@@ -656,65 +703,95 @@ backBtn.addEventListener('click', () => {
     makeStart();
 })
 
+playResult.addEventListener('click', () => {
+    delResult();
+    makeGame();
+})
 
 
 
 
+//footer
+// const footer = document.createElement('footer');
+// const footerWrapper = document.createElement('div');
+// const gitHubLink = document.createElement('a');
+// const gitHuImg = document.createElement('img');
+// const footerDate = document.createElement('p');
+// const rsLink = document.createElement('a');
+// const rsImg = document.createElement('img');
+
+// footer.classList.add('footer');
+// footerWrapper.classList.add('footer__wrapper');
+// gitHubLink.classList.add('github__link');
+// gitHuImg.classList.add('github__img');
+// footerDate.classList.add('footer__date');
+// rsLink.classList.add('rs__link');
+// rsImg.classList.add('rs__img');
+
+
+// gitHubLink.href = 'https://github.com/JuliaGrib';
+// gitHuImg.src = 'github.png';
+// footerDate.innerHTML = '2022';
+// rsLink.href = 'https://rs.school/js/';
+// rsImg.src = 'rs_school_js.svg';
+
+// document.body.appendChild(footer);
+// footer.appendChild(footerWrapper);
+// footerWrapper.appendChild(gitHubLink);
+// gitHubLink.appendChild(gitHuImg);
+// footerWrapper.appendChild(footerDate);
+// footerWrapper.appendChild(rsImg);
 
 
 
 
+let lang;
 
-// //////////////const control = document.querySelector('.control');
-// //////////////const title = document.querySelector('.title');
-// /////////////const audio = document.querySelector('.audio');
-// ///////////const playBtn = document.querySelector('.song__btn');
-// ////////////const progressContainer = document.querySelector('.progress__container');
-// ////////////const progress = document.querySelector('.progress');
-// ////////////const volume = document.querySelector('#volume');
+if (!(localStorage.getItem('lang'))){
+    console.log('hi');
+} else {
+    lang = localStorage.getItem('lang');
+    changeLang(lang);
+}
 
-// ////////////////const coverMain = document.querySelector('.cover__img');
+const ru = document.querySelector('.ru');
+const en = document.querySelector('.en');
 
-// ///////////////const scoreInfo = document.querySelector('.score_info');
-// /////////////const sideabarCover = document.querySelector('.choose__img');
-// c////////////onst sideabarSongName = document.querySelector('.choose__song-name');
-
-
-//////// const btnStart = document.querySelector('.btn__start');
-// ///////////////const wrapperMain = document.querySelector('.wrapper');
-// ///////////////const wrapperResult = document.querySelector('.wrapper__result');
-// const resultText = document.querySelector('.result__text ');
-
-
-
-
+ru.addEventListener('click', () => {
+    localStorage.setItem('lang', 'ru');
+    lang = localStorage.getItem('lang');
+    changeLang(lang);
+})
+en.addEventListener('click', () => {
+    localStorage.setItem('lang', 'en');
+    lang = localStorage.getItem('lang');
+    changeLang(lang);
+})
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// //второй плеер
-// /////////const chooseControl = document.querySelector('.choose__control');
-// /////////const chooseTitle = document.querySelector('.title');
-// c/////////onst chooseAudio = document.querySelector('.choose__audio');
-// ////////////const choosePlayBtn = document.querySelector('.choose__song__btn');
-// ////////////const chooseProgressContainer = document.querySelector('.choose__progress__container');
-// ////////////const chooseProgress = document.querySelector('.choose__progress');
-// ////////////const chooseVolume = document.querySelector('.choose__range');
-// ///////////const chooseText = document.querySelector('.choose__text');
-
-
-
-
+function changeLang(lang){
+    if(lang == 'ru'){
+        console.log('русский');
+        buttonStartMain.innerHTML = 'Старт';
+        buttonResultMain.innerHTML = 'Результат';
+        buttonGalleryMain.innerHTML = 'Галерея';
+        buttonAboutMain.innerHTML = 'Об игре';
+        chooseTitle.innerHTML = 'Выберете песню..';
+        sideabarSongName.innerHTML = 'Включите плеер <br>Выберете песню';
+        chooseText.innerHTML = 'О песне...';
+        scoreInfoHeader.innerHTML = `Результат: ${score}`;
+    }
+    if (lang == 'en'){
+        console.log('английский');
+        buttonStartMain.innerHTML = 'Start';
+        buttonResultMain.innerHTML = 'Result';
+        buttonGalleryMain.innerHTML = 'Gallery';
+        buttonAboutMain.innerHTML = 'About';
+        chooseTitle.innerHTML = 'Selected song..';
+        sideabarSongName.innerHTML = 'Listen to the player <br>Choose a song';
+        chooseText.innerHTML = 'About song...';
+        scoreInfoHeader.innerHTML = `Score: ${score}`;
+        
+        
+    }
+}
