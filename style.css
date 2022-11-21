@@ -17,6 +17,9 @@ body {
     font-family: 'Sono', sans-serif;
     color: white;
 }
+.logo__img {
+    width: 300px;
+}
 
 /* start */
 .wrapper__start, .wrapper__language, .about__wrapper {
@@ -703,10 +706,10 @@ padding-top: 20px;
 .footer {
     /* margin-top: 30px; */
     padding: 10px 0;
-    /* position: absolute;
+    position: absolute;
     width: 100%;
-    bottom: -100px; */
-    background: rgba(0, 0, 0, 0.5);
+    bottom: 0px;
+    background: rgba(0, 0, 0, 1);
 
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(11.2px);
@@ -735,4 +738,100 @@ padding-top: 20px;
 
 
 
+
+.gallery__wrapper {
+    height: 90%;
+    overflow-y: auto;
+    box-sizing:border-box;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+    margin: 50px auto 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.2px);
+    -webkit-backdrop-filter: blur(11.2px);
+}
+.gallery__wrapper::-webkit-scrollbar { width: 0; }
+
+.song__cover {
+    width: 200px;
+}
+.gallery__logo {
+    
+    width: 300px;
+}
+.song__wrap {
+    display: flex;
+    margin: 40px 20px;
+}
+
+.song__inf {
+    margin: 0 0 0 20px;
+}
+.song__inf2 {
+    display: flex;
+}
+.play__g {
+    width: 30px;
+    margin: 0 20px 0 0;
+    cursor: pointer;
+}
+.song__head {
+    font-size: 25px;
+}
+
+.song__descr {
+    margin-top: 15px;
+    /* height: 100px;
+    overflow-y: scroll; */
+    -ms-overflow-style: none; 
+    overflow: -moz-scrollbars-none;
+}
+.song__descr::-webkit-scrollbar { width: 0; }
+
+
+.control__g {
+    display: flex;
+}
+.input__g {
+    -webkit-appearance: none;
+    margin-left: 20px;
+    border-radius: 15px;
+    height: 7px;
+    width: 100%;
+    background:-webkit-linear-gradient(left, #c37fff 0%, #c37fff 0%, #373538 0%, #373538 100%);
+}
+.input__g::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background: #c37fff;
+    cursor: pointer;
+}
+.input__g::-moz-range-track {
+    -moz-appearance: none;
+    width: 100%;
+    border-radius: 15px;
+    height: 7px;
+    background:-moz-linear-gradient(left, #c37fff 0%, #c37fff 0%, transparent 0%, transparent 100%);
+}
+
+.input__g::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background: #c37fff;
+    cursor: pointer;
+}
 

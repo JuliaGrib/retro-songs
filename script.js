@@ -1,3 +1,5 @@
+
+console.log('Привет друг, я не успела доделать все что хотела, поэтому не проверяй мою работу пожалуйста раньше 24го числа. Спасибо!!!!!!!!!')
 var lang;
 
 if (!(localStorage.getItem('lang'))){
@@ -6,7 +8,6 @@ if (!(localStorage.getItem('lang'))){
 if(!(localStorage.getItem('scoreLocal'))){
     localStorage.setItem('scoreLocal', '');
 }
-console.log(localStorage.getItem('scoreLocal'));
 
 let question;
 let score;
@@ -14,6 +15,7 @@ let randomNum;
 
 ////////////////////////////////////start
 
+const testStartWrapper = document.createElement('div');
 const wrapperStart = document.createElement('div');
 const logoStart = document.createElement('img');
 const buttonsWrapper = document.createElement('div');
@@ -54,7 +56,31 @@ function makeStart() {
         buttonAboutMain.innerHTML = 'Об игре';
      }
 
-    document.body.appendChild(wrapperStart);
+     const footer = document.createElement('footer');
+     const footerWrapper = document.createElement('div');
+     const gitHubLink = document.createElement('a');
+     const gitHuImg = document.createElement('img');
+     const footerDate = document.createElement('p');
+     const rsLink = document.createElement('a');
+     const rsImg = document.createElement('img');
+ 
+     footer.classList.add('footer');
+     footerWrapper.classList.add('footer__wrapper');
+     gitHubLink.classList.add('github__link');
+     gitHuImg.classList.add('github__img');
+     footerDate.classList.add('footer__date');
+     rsLink.classList.add('rs__link');
+     rsImg.classList.add('rs__img');
+ 
+ 
+     gitHubLink.href = 'https://github.com/JuliaGrib';
+     gitHuImg.src = 'github.png';
+     footerDate.innerHTML = '2022';
+     rsLink.href = 'https://rs.school/js/';
+     rsImg.src = 'rs_school_js.svg';
+
+    document.body.appendChild(testStartWrapper);
+    testStartWrapper.appendChild(wrapperStart);
     wrapperStart.appendChild(logoStart);
     wrapperStart.appendChild(buttonsWrapper);
     buttonsWrapper.appendChild(buttonStartMain);
@@ -62,14 +88,23 @@ function makeStart() {
     buttonsWrapper.appendChild(buttonResultMain);
     buttonsWrapper.appendChild(buttonGalleryMain);
     buttonsWrapper.appendChild(buttonAboutMain);
+    testStartWrapper.appendChild(footer);
+    footer.appendChild(footerWrapper);
+    footerWrapper.appendChild(gitHubLink);
+    gitHubLink.appendChild(gitHuImg);
+    footerWrapper.appendChild(footerDate);
+    footerWrapper.appendChild(rsLink);
+    rsLink.appendChild(rsImg);
 }
 
 function delStart(){
-    document.body.removeChild(wrapperStart);
+    document.body.removeChild(testStartWrapper);
 }
 
 
 ///////////////////////////////////////////// language
+
+const testLanguageWrapper = document.createElement('div');
 
 const wrapperLanguage = document.createElement('div');
 const logoLanguage = document.createElement('img');
@@ -90,6 +125,12 @@ english.classList.add('en');
 russian.classList.add('ru');
 backLanguage.classList.add('back__language');
 
+
+
+
+
+
+
 function makeLanguage(){
     let localLang = localStorage.getItem('lang')
 
@@ -104,12 +145,43 @@ function makeLanguage(){
         english.classList.remove('active__lang');
     }
 
-    document.body.appendChild(wrapperLanguage);
+    const footer = document.createElement('footer');
+    const footerWrapper = document.createElement('div');
+    const gitHubLink = document.createElement('a');
+    const gitHuImg = document.createElement('img');
+    const footerDate = document.createElement('p');
+    const rsLink = document.createElement('a');
+    const rsImg = document.createElement('img');
+
+    footer.classList.add('footer');
+    footerWrapper.classList.add('footer__wrapper');
+    gitHubLink.classList.add('github__link');
+    gitHuImg.classList.add('github__img');
+    footerDate.classList.add('footer__date');
+    rsLink.classList.add('rs__link');
+    rsImg.classList.add('rs__img');
+
+
+    gitHubLink.href = 'https://github.com/JuliaGrib';
+    gitHuImg.src = 'github.png';
+    footerDate.innerHTML = '2022';
+    rsLink.href = 'https://rs.school/js/';
+    rsImg.src = 'rs_school_js.svg';
+
+    document.body.appendChild(testLanguageWrapper);
+    testLanguageWrapper.appendChild(wrapperLanguage);
     wrapperLanguage.appendChild(logoLanguage);
     wrapperLanguage.appendChild(contentLanguage);
     contentLanguage.appendChild(english);
     contentLanguage.appendChild(russian);
     contentLanguage.appendChild(backLanguage);
+    testLanguageWrapper.appendChild(footer);
+    footer.appendChild(footerWrapper);
+    footerWrapper.appendChild(gitHubLink);
+    gitHubLink.appendChild(gitHuImg);
+    footerWrapper.appendChild(footerDate);
+    footerWrapper.appendChild(rsLink);
+    rsLink.appendChild(rsImg);
 
 
     russian.addEventListener('click', () => {
@@ -130,12 +202,13 @@ function makeLanguage(){
 }
 
 function delLanguage(){
-    document.body.removeChild(wrapperLanguage);
+    document.body.removeChild(testLanguageWrapper);
 }
 
 
 ////////////////////////////////////////////////result
 
+const testWrapperResult = document.createElement('div');
 const wrapperResult = document.createElement('div');
 const containerResult = document.createElement('div');
 const headerResult = document.createElement('p');
@@ -207,19 +280,35 @@ function makeResult(){
         }
     }
 
-    document.body.appendChild(wrapperResult);
+    const footer = document.createElement('footer');
+    const footerWrapper = document.createElement('div');
+    const gitHubLink = document.createElement('a');
+    const gitHuImg = document.createElement('img');
+    const footerDate = document.createElement('p');
+    const rsLink = document.createElement('a');
+    const rsImg = document.createElement('img');
+
+    document.body.appendChild(testWrapperResult);
+    testWrapperResult.appendChild(wrapperResult);
     wrapperResult.appendChild(containerResult);
     containerResult.appendChild(headerResult);
     containerResult.appendChild(textResult);
     containerResult.appendChild(imgResult);
     containerResult.appendChild(playResult);
     containerResult.appendChild(backBtn);
+    testWrapperResult.appendChild(footer);
+    footer.appendChild(footerWrapper);
+    footerWrapper.appendChild(gitHubLink);
+    gitHubLink.appendChild(gitHuImg);
+    footerWrapper.appendChild(footerDate);
+    footerWrapper.appendChild(rsLink);
+    rsLink.appendChild(rsImg);
 
 
 }
 
 function delResult(){
-    document.body.removeChild(wrapperResult);
+    document.body.removeChild(testWrapperResult);
 }
 
 
@@ -322,7 +411,7 @@ chooseAbout.classList.add('choose__about');
 chooseText.classList.add('choose__text');
 
 
-logoImgMain.src = 'logo.png';
+logoImgMain.src = 'song.png';
 // scoreInfoHeader.innerHTML = 'Score: 0';
 ulHeader.innerHTML = `<li class="header__elem">60's</li>
 <li class="header__elem">70's</li>
@@ -929,7 +1018,7 @@ aboutBtn.addEventListener('click', ()=> {
 })
 
 
-//footer
+// footer
 // const footer = document.createElement('footer');
 // const footerWrapper = document.createElement('div');
 // const gitHubLink = document.createElement('a');
@@ -962,3 +1051,112 @@ aboutBtn.addEventListener('click', ()=> {
 
 
 
+
+
+/// gallery
+
+const galleryWrapper = document.createElement('div');
+const galleryLogo = document.createElement('img');
+const galleryContent = document.createElement('div');
+let audioTest = document.createElement('audio');
+
+galleryWrapper.classList.add('gallery__wrapper');
+galleryLogo.classList.add('gallery__logo');
+
+galleryLogo.src = 'song.png';
+
+
+function makeGallery() {
+    let localLang = localStorage.getItem('lang');
+    
+
+
+    document.body.appendChild(galleryWrapper);
+    galleryWrapper.appendChild(galleryLogo);
+    galleryWrapper.appendChild(audioTest);
+    galleryWrapper.appendChild(galleryContent);
+
+    for(let i = 0; i < songs.length; i++){
+        // console.log(songs[i]);
+        for(let k = 0; k < songs[i].length; k++) {
+            // console.log(songs[i][k].songName);
+
+            let songWrap = document.createElement('div');
+            songWrap.classList.add('song__wrap');
+            galleryContent.appendChild(songWrap);
+            let songCover = document.createElement('img');
+            songCover.classList.add('song__cover');
+            songCover.src = songs[i][k].songImg;
+            songWrap.appendChild(songCover);
+            const songInf = document.createElement('div');
+            songInf.classList.add('song__inf');
+            songWrap.appendChild(songInf);
+            let songInf2 = document.createElement('div');
+            songInf2.classList.add('song__inf2');
+            songInf.appendChild(songInf2);
+            let playG = document.createElement('img');
+            playG.classList.add('play__g');
+            playG.src = 'play.svg';
+            playG.setAttribute('data-name', `${songs[i][k].songName}`);
+            songInf2.appendChild(playG);
+            
+            
+            let songHead = document.createElement('p');
+            songHead.classList.add('song__head');
+            songHead.innerHTML = songs[i][k].songName;
+            songInf2.appendChild(songHead);
+            let songDescr = document.createElement('div');
+            songDescr.classList.add('song__descr');
+            songInf.appendChild(songDescr);
+            let songText = document.createElement('p');
+            songText.classList.add('song__text');
+            songText.innerHTML = songs[i][k][localLang];
+            songDescr.appendChild(songText);
+
+
+        }
+    }
+
+    let playBtns = document.querySelectorAll('.play__g');
+    playBtns.forEach(elem => {
+        elem.addEventListener('click', ()=> {
+            
+            if(elem.classList.contains('playSong')){
+                console.log(elem.classList.contains('playSong'))
+                elem.classList.remove('playSong');
+                elem.src = 'play.svg';
+                pauseSong(elem);
+            }
+            else if (!(elem.classList.contains('playSong'))){
+                for(let i = 0; i < playBtns.length; i++){
+                    playBtns[i].classList.remove('playSong');
+                    playBtns[i].src = 'play.svg';
+                }
+                playSong(elem);
+            }
+            
+            
+        })
+    })
+
+    function playSong(elem){
+        elem.src = 'pause.svg';
+        elem.classList.add('playSong');
+        audioTest.src = `assets/music/all/${elem.dataset.name}.mp3`;
+        audioTest.play();
+    }
+    function pauseSong(elem){
+        elem.src = 'play.svg';
+        elem.classList.remove('playSong');
+        audioTest.pause();
+    }
+
+}
+
+
+
+
+buttonGalleryMain.addEventListener('click', () => {
+    delStart();
+    makeGallery();
+})

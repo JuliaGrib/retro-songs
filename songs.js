@@ -67,13 +67,6 @@ const songs = [
             en: `"Oh, Pretty Woman" or simply "Pretty Woman"  - was released as a single in August 1964 on Monument Records and spent three weeks at number one on the Billboard Hot 100 from September 26, 1964, the second and final single by Orbison to top the US charts.  The LP version with the intended lyric: "come with me baby" was changed for the single to "come to me baby" as the former was considered too risque. `,
             ru: `«Oh, Pretty Woman» или просто «Pretty Woman». Он был выпущен как сингл в августе 1964 года на лейбле Monument Records и три недели занимал первое место в Billboard Hot 100 с 26 сентября 1964 года. возглавить чарты США. Версия LP с предполагаемой лирикой: «Пойдем со мной, детка» была изменена на сингл на «Иди ко мне, детка», поскольку первое было сочтено слишком рискованным.`,
         },
-        {
-            songName: "The House of the Rising Sun - The Animals",
-            songSrc: "assets/music/60/cut/The House of the Rising Sun - The Animals",
-            songImg: "assets/img/60/The House of the Rising Sun - The Animals",
-            en: `"The House of the Rising Sun" is a traditional folk song, sometimes called "Rising Sun Blues". It tells of a person's life gone wrong in the city of New Orleans. Many versions also urge a sibling or parents and children to avoid the same fate. The most successful commercial version, recorded in 1964 by the British rock band The Animals, was a number one hit on the UK Singles Chart and in the US and Canada. As a traditional folk song recorded by an electric rock band, it has been described as the "first folk rock hit".`,
-            ru: `«The House of the Rising Sun» (с англ. — «Дом восходящего солнца») — песня занимала первые строчки хит-парадов как США, так и Великобритании в 1964 году. Версия The Animals вошла (под № 123) в Список 500 лучших песен всех времён журнала Rolling Stone (2004). Существует множество вариантов песни, в которых значительно варьируется сюжет. Во всех вариантах герой повествует о том, как погубил свою жизнь в доме «Восходящего Солнца», и предостерегает от такой судьбыю`,
-        }
     ],
     [
         {
