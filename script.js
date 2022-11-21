@@ -336,6 +336,7 @@ function makeGame() {
         makeStartSong(question);
         makeSongsList(question);
         changeYear(question);
+
     }
     function changeYear(question){
         yearsList.forEach(elem => {
@@ -354,6 +355,7 @@ function makeGame() {
     // //функция по запуску песни
     function makeStartSong(question) {
         audio.src = songs[question][randomNum].songSrc;
+
     }
 
         //плеер
@@ -361,12 +363,14 @@ function makeGame() {
         control.classList.add('play');
         audio.play();
         playBtn.src = 'pause.svg';
+
     }
 
     function pauseSong() {
         control.classList.remove('play');
         audio.pause();
         playBtn.src = 'play.svg';
+
     }
 
     playBtn.addEventListener('click', isPlaying);
@@ -378,49 +382,100 @@ function makeGame() {
         } else {
             playSong();
         }
+
     }
 
-    //progress bar
-    function updateProgress(e){
-        const {duration, currentTime} = e.srcElement;
+    // //progress bar
+    // function updateProgress(e){
+    //     const {duration, currentTime} = e.srcElement;
 
-        let a = String(Math.round(currentTime));
-        if(a == '30'){
-            a = '0';
-            document.querySelector('.start').innerHTML = `00:0${a}`;
-        } else if (a.length == 2) {
-            document.querySelector('.start').innerHTML = `00:${Math.round(currentTime)}`;
-        } else if (a.length == 1){
+    //     let a = String(Math.round(currentTime));
+    //     if(a == '30'){
+    //         a = '0';
+    //         document.querySelector('.start').innerHTML = `00:0${a}`;
+    //     } else if (a.length == 2) {
+    //         document.querySelector('.start').innerHTML = `00:${Math.round(currentTime)}`;
+    //     } else if (a.length == 1){
         
-            document.querySelector('.start').innerHTML = `00:0${a}`;
+    //         document.querySelector('.start').innerHTML = `00:0${a}`;
+    //     }
+        
+    //     document.querySelector('.end').innerHTML = Math.round(duration);
+    //     let progresPercent = (currentTime / duration) *100;
+    //     // console.log(progresPercent);
+    //     if(isNaN(progresPercent)){
+    //         progresPercent = 0;
+    //     } else if(progresPercent == 100) {
+    //         progresPercent = 0;
+    //         pauseSong();
+    //     }
+    //     // console.log(progresPercent);
+    //     progress.value = progresPercent;
+    //     let val = progress.value;
+    //     progress.style.background = `-webkit-linear-gradient(left, #c37fff 0%, #c37fff ${val}%, transparent ${val}%, transparent 100%)`;
+
+
+        
+    // }
+
+    // audio.addEventListener('timeupdate', updateProgress);
+
+
+    // // бегунок
+    // function setProgress(e){
+    //     const width = this.clientWidth;
+    //     const clickX = e.offsetX;
+    //     const duration = audio.duration;
+    //     audio.currentTime = (clickX / width) * duration;
+
+        
+    // }
+
+    // progressContainer.addEventListener('click', setProgress);
+
+    function changeInput(){
+        let val = progress.value;
+        progress.style.background = `-webkit-linear-gradient(left, #c37fff 0%, #c37fff ${val}%, transparent ${val}%, transparent 100%)`;
+
+    }
+    progress.addEventListener('input', changeInput);
+  
+
+    
+
+    function updateProgress(){
+        let val = (audio.currentTime / audio.duration) *100;
+        if(isNaN(val)){
+            progress.value = 0;
+            progress.style.background = `-webkit-linear-gradient(left, #c37fff 0%, #c37fff 0%, transparent 0%, transparent 100%)`;
+        } else {
+            progress.value = (audio.currentTime / audio.duration) *100;
+            progress.style.background = `-webkit-linear-gradient(left, #c37fff 0%, #c37fff ${val}%, transparent ${val}%, transparent 100%)`;
         }
         
-        document.querySelector('.end').innerHTML = Math.round(duration);
-        let progresPercent = (currentTime / duration) *100;
-        // console.log(progresPercent);
-        if(isNaN(progresPercent)){
-            progresPercent = 0;
-        } else if(progresPercent == 100) {
-            progresPercent = 0;
-            pauseSong();
-        }
-        // console.log(progresPercent);
-        progress.value = progresPercent;
-        document.querySelector('.progress__line').style.width = `${(Math.round(progresPercent))}%`;
-
     }
 
     audio.addEventListener('timeupdate', updateProgress);
 
-    //бегунок
-    function setProgress(e){
-        const width = this.clientWidth;
-        const clickX = e.offsetX;
-        const duration = audio.duration;
-        audio.currentTime = (clickX / width) * duration;
+    progress.addEventListener('input', setInput);
+
+    progress.addEventListener('mouseup', setListaner);
+
+
+    function setInput(){
+        audio.removeEventListener('timeupdate', updateProgress);
+        
+
+        
+    }
+    function setListaner(){
+        audio.currentTime = (audio.duration / 100)* progress.value;
+        audio.addEventListener('timeupdate', updateProgress);
+      
+
     }
 
-    progressContainer.addEventListener('click', setProgress);
+
 
     //настройка звука
     function soundVolume() {
@@ -540,43 +595,61 @@ function makeGame() {
     function startMainSong(){
         title.innerHTML = "***";
         coverMain.src = 'question.jpg';
+        progress.value = '1';
+
+        progress.style.background = `-webkit-linear-gradient(left, #c37fff 0%, #c37fff 0%, transparent 0%, transparent 100%)`;
     }
 
     nextBtn.addEventListener('click', forNext);
 
     function forNext(){
+ 
+
         question++;
         nextBtn.classList.remove('next-active');
+
         chooseControl.classList.remove('play');
+
         chooseProgress.style.width = '0px';
+
+
         let last = yearsList.length;
+
         if (question == last){
             playBtn.removeEventListener('click', isPlaying);
+
             nextBtn.removeEventListener('click', forNext);
+
             chooseAudio.removeEventListener('timeupdate', chooseUpdateProgress);
             chooseProgressContainer.removeEventListener('click', chooseSetProgress);
-            progressContainer.removeEventListener('click', setProgress);
+            // progressContainer.removeEventListener('click', setProgress);
+            progress.removeEventListener('input', setInput);
+            progress.removeEventListener('mouseup', setListaner);
+            progress.removeEventListener('input', changeInput);
+            audio.removeEventListener('timeupdate', updateProgress);
             localStorage.setItem('scoreLocal', score);
-
-
             delGame();
             startMainSong();
             makeResult();
             pauseSong();
             startSideBar();
-            
 
         }
         else {
             startGame();
+
             startMainSong();
+
             startSideBar();
+
             pauseSong();
+
         
             variantElem.forEach(elem => {
                 elem.classList.remove('win');
                 elem.classList.remove('default');
                 elem.classList.remove('no-choose');
+
             });
         }
     }
@@ -611,6 +684,7 @@ function makeGame() {
         choosePlayBtn.style.pointerEvents = 'none';
         chooseProgressContainer.style.pointerEvents = 'none';
         chooseProgress.style.pointerEvents = 'none';
+
     }
 
     function showChooseSong() {
@@ -659,7 +733,7 @@ function makeGame() {
         const clickX = e.offsetX;
         const duration = chooseAudio.duration;
         chooseAudio.currentTime = (clickX / width) * duration;
-        console.log(duration);
+        console.log(width);
     }
 
     chooseProgressContainer.addEventListener('click', chooseSetProgress);

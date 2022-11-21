@@ -285,15 +285,10 @@ body {
 .progress {
     -webkit-appearance: none;
     width: 100%;
-    background: transparent;
-}
-.progress::-moz-range-thumb {
-    -webkit-appearance: none;
-    height: 17px;
-    width: 17px;
-    border-radius: 50%;
-    background: #c37fff;
-    cursor: pointer;
+    border-radius: 15px;
+    height: 7px;
+    background:-webkit-linear-gradient(left, #c37fff 0%, #c37fff 0%, transparent 0%, transparent 100%);
+    /* background: transparent; */
 }
 .progress::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -303,7 +298,44 @@ body {
     background: #c37fff;
     cursor: pointer;
 }
+
+/* .progress::-moz-range-track {
+    -moz-appearance: none;
+    width: 100%;
+    border-radius: 15px;
+    height: 7px;
+    background:-moz-linear-gradient(left, #c37fff 0%, #c37fff 0%, transparent 0%, transparent 100%);
+} */
+.progress::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background: #c37fff;
+    cursor: pointer;
+}
+/* .progress::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background: #c37fff;
+    cursor: pointer;
+} */
+/* .progress::-webkit-range-thumb {
+    -webkit-appearance: none;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background: #c37fff;
+    cursor: pointer;
+}
+*/
+/* .progress::-webkit-slider-runnable-track{
+    background: #c37fff;
+} */ 
 .progress__line {
+    display: none;
     position: absolute;
     z-index: 1000;
     background-color: rgb(195, 127, 255);
