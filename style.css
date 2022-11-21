@@ -19,7 +19,7 @@ body {
 }
 
 /* start */
-.wrapper__start {
+.wrapper__start, .wrapper__language, .about__wrapper {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -40,15 +40,48 @@ body {
     -webkit-backdrop-filter: blur(11.2px);
 }
 
-.logo__start {
+.logo__start, .logo__language, .about__logo {
     max-width: 300px;
 }
+.content__language {
+    padding-top: 20px;
+}
+.en, .ru {
+    padding: 10px 0;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+.en:hover, .ru:hover {
+
+    color:#ff8bf3;
+}
+.active__lang {
+    color:#c37fff;
+    text-decoration: underline;
+}
+
+.about__wrapper{
+    max-width: 552px;
+}
+.about__content {
+padding-top: 20px;
+}
+.about__header {
+    font-size: 25px;
+    padding-bottom: 20px;
+}
+.about__text {
+    font-size: 19px;
+    padding-bottom: 20px;
+}
+
 
 .buttons__start {
     display: flex;
     flex-direction: column;
 }
-.btn__start, .btn__result, .btn__gallery, .btn__about, .result__start {
+.btn__start, .btn__result, .btn__gallery, .btn__about, .result__start, .language__main, .back__language, .about__btn {
     width: 250px;
     font-size: 20px;
     margin: 20px 0 0 0;
@@ -62,7 +95,7 @@ body {
     transition: 0.5s;
 }
 
-.btn__start:hover, .btn__result:hover, .btn__gallery:hover, .btn__about:hover, .result__start:hover {
+.btn__start:hover, .btn__result:hover, .btn__gallery:hover, .btn__about:hover, .result__start:hover, .language__main:hover, .back__language:hover, .about__btn:hover {
     background-color: #e452e4;
 
 }
@@ -345,7 +378,7 @@ body {
 .range {
     margin: 20px 0 0 0;
 
-    background-color: rgba(109, 109, 109, 0.4);
+    background:-webkit-linear-gradient(left, #c37fff 0%, #c37fff 50%, rgba(109, 109, 109, 0.4) 50%, rgba(109, 109, 109, 0.4) 100%);
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -361,6 +394,7 @@ body {
     border-radius: 50%;
     background: #c37fff;
     cursor: pointer;
+    
 }
 
 .range::-webkit-slider-thumb {
@@ -697,26 +731,7 @@ body {
 
 
 
-.lang {
-    position: absolute;
-    right: 30px;
-    top: 30px;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    width: 90px;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
-    backdrop-filter: blur(11.2px);
-    -webkit-backdrop-filter: blur(11.2px);
-}
 
-.ru, .en {
-    cursor: pointer;
-    
-}
 
 
 

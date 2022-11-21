@@ -1,21 +1,24 @@
+var lang;
 
-
-
-
+if (!(localStorage.getItem('lang'))){
+    localStorage.setItem('lang', 'en');
+} 
+if(!(localStorage.getItem('scoreLocal'))){
+    localStorage.setItem('scoreLocal', '');
+}
+console.log(localStorage.getItem('scoreLocal'));
 
 let question;
 let score;
 let randomNum;
 
-// console.log( localStorage.getItem('scoreLocal') );
+////////////////////////////////////start
 
-//start
-// const test = document.createElement('div');
-// document.body.appendChild(test);
 const wrapperStart = document.createElement('div');
 const logoStart = document.createElement('img');
 const buttonsWrapper = document.createElement('div');
 const buttonStartMain = document.createElement('button');
+const buttonLanguageMain = document.createElement('button');
 const buttonResultMain = document.createElement('button');
 const buttonGalleryMain = document.createElement('button');
 const buttonAboutMain = document.createElement('button');
@@ -24,19 +27,115 @@ wrapperStart.classList.add('wrapper__start');
 logoStart.classList.add('logo__start');
 buttonsWrapper.classList.add('buttons__start');
 buttonStartMain.classList.add('btn__start');
+buttonLanguageMain.classList.add('language__main');
 buttonResultMain.classList.add('btn__result');
 buttonGalleryMain.classList.add('btn__gallery');
 buttonAboutMain.classList.add('btn__about');
 
 logoStart.src = 'song.png';
-buttonStartMain.innerHTML = 'Start';
-buttonResultMain.innerHTML = 'Result';
-buttonGalleryMain.innerHTML = 'Gallery';
-buttonAboutMain.innerHTML = 'About';
+
+makeStart();
+
+function makeStart() {
+    let localLang = localStorage.getItem('lang');
+    
+     if(localLang == 'en'){
+        buttonStartMain.innerHTML = 'Start game';
+        buttonLanguageMain.innerHTML = 'Language';
+        buttonResultMain.innerHTML = 'Result';
+        buttonGalleryMain.innerHTML = 'Gallery';
+        buttonAboutMain.innerHTML = 'About';
+     }
+     if(localLang == 'ru'){
+        buttonStartMain.innerHTML = 'Начать игру';
+        buttonLanguageMain.innerHTML = 'Язык';
+        buttonResultMain.innerHTML = 'Результат';
+        buttonGalleryMain.innerHTML = 'Галерея';
+        buttonAboutMain.innerHTML = 'Об игре';
+     }
+
+    document.body.appendChild(wrapperStart);
+    wrapperStart.appendChild(logoStart);
+    wrapperStart.appendChild(buttonsWrapper);
+    buttonsWrapper.appendChild(buttonStartMain);
+    buttonsWrapper.appendChild(buttonLanguageMain);
+    buttonsWrapper.appendChild(buttonResultMain);
+    buttonsWrapper.appendChild(buttonGalleryMain);
+    buttonsWrapper.appendChild(buttonAboutMain);
+}
+
+function delStart(){
+    document.body.removeChild(wrapperStart);
+}
 
 
+///////////////////////////////////////////// language
 
-//result
+const wrapperLanguage = document.createElement('div');
+const logoLanguage = document.createElement('img');
+const contentLanguage = document.createElement('div');
+const english = document.createElement('p');
+const russian = document.createElement('p');
+const backLanguage = document.createElement('button');
+
+wrapperLanguage.classList.add('wrapper__language');
+logoLanguage.classList.add('logo__language');
+contentLanguage.classList.add('content__language');
+
+logoLanguage.src = 'song.png';
+english.innerHTML = 'English';
+russian.innerHTML = 'Русский';
+
+english.classList.add('en');
+russian.classList.add('ru');
+backLanguage.classList.add('back__language');
+
+function makeLanguage(){
+    let localLang = localStorage.getItem('lang')
+
+    if(localLang == 'en'){
+        backLanguage.innerHTML = 'Main menu';
+        english.classList.add('active__lang');
+        russian.classList.remove('active__lang');
+    }
+    if(localLang == 'ru'){
+        backLanguage.innerHTML = 'Главное меню';
+        russian.classList.add('active__lang');
+        english.classList.remove('active__lang');
+    }
+
+    document.body.appendChild(wrapperLanguage);
+    wrapperLanguage.appendChild(logoLanguage);
+    wrapperLanguage.appendChild(contentLanguage);
+    contentLanguage.appendChild(english);
+    contentLanguage.appendChild(russian);
+    contentLanguage.appendChild(backLanguage);
+
+
+    russian.addEventListener('click', () => {
+        localStorage.setItem('lang', 'ru');
+        var lang = localStorage.getItem('lang');
+        backLanguage.innerHTML = 'Главное меню';
+        russian.classList.add('active__lang');
+        english.classList.remove('active__lang');
+        
+    })
+    english.addEventListener('click', () => {
+        localStorage.setItem('lang', 'en');
+        var lang = localStorage.getItem('lang');
+        backLanguage.innerHTML = 'Main menu';
+        english.classList.add('active__lang');
+        russian.classList.remove('active__lang');
+    })
+}
+
+function delLanguage(){
+    document.body.removeChild(wrapperLanguage);
+}
+
+
+////////////////////////////////////////////////result
+
 const wrapperResult = document.createElement('div');
 const containerResult = document.createElement('div');
 const headerResult = document.createElement('p');
@@ -54,77 +153,74 @@ backBtn.classList.add('backBtn');
 playResult.classList.add('result__start');
 
 
-headerResult.innerHTML = 'Congratulations!';
-textResult.innerHTML = 'You scored 20 points out of 20 possible.';
-backBtn.innerHTML = 'Back';
-playResult.innerHTML = 'Play game';
-
-
-makeStart();
-
-function makeStart() {
-    document.body.appendChild(wrapperStart);
-    wrapperStart.appendChild(logoStart);
-    wrapperStart.appendChild(buttonsWrapper);
-    buttonsWrapper.appendChild(buttonStartMain);
-    buttonsWrapper.appendChild(buttonResultMain);
-    buttonsWrapper.appendChild(buttonGalleryMain);
-    buttonsWrapper.appendChild(buttonAboutMain);
-}
-
-function delStart(){
-    document.body.removeChild(wrapperStart);
-}
 
 function makeResult(){
-    let btn;
-    if((localStorage.getItem('scoreLocal')) == ''){
-        headerResult.innerHTML = '';
-        textResult.innerHTML = `You don't have any points.`;
-        imgResult.src = '';
-        backBtn.innerHTML = 'Back';
-        btn = 'play';
-                if((document.querySelector('.backBtn'))){
-            containerResult.removeChild(backBtn);
+
+    let localLang = localStorage.getItem('lang');
+    let localScore = localStorage.getItem('scoreLocal');
+
+    if(localLang == 'en'){
+        if(localScore == '' || localScore == '0' || localScore == 0) {
+            headerResult.innerHTML = `You don't have points`;
+            textResult.innerHTML = `Play a game or return to the main menu.`;
+            imgResult.src = '';
+            playResult.innerHTML = 'Start game';
+            backBtn.innerHTML = 'Main menu';
+        }
+        else if (localScore == '20' || localScore == 20) {
+            headerResult.innerHTML = `You are the winner!`;
+            textResult.innerHTML = `You scored the maximum ${localScore} points out of 20 possible!`;
+            imgResult.src = 'disco.gif';
+            playResult.innerHTML = 'Play again';
+            backBtn.innerHTML = 'Main menu';
+        }
+        else {
+            headerResult.innerHTML = `Congratulations!`;
+            textResult.innerHTML = `You scored  ${localScore} points out of 20 possible.`;
+            imgResult.src = 'disco.gif';
+            playResult.innerHTML = 'Restart game';
+            backBtn.innerHTML = 'Main menu';
+        }
+        
+    }
+    if(localLang == 'ru'){
+        if(localScore == '' || localScore == '0' || localScore == 0) {
+            headerResult.innerHTML = `У вас нет очков.`;
+            textResult.innerHTML = `Сыграйте в игру или вернитесь в главное меню`;
+            imgResult.src = '';
+            playResult.innerHTML = 'Начать игру';
+            backBtn.innerHTML = 'Главное меню';
+        }
+        else if (localScore == '20' || localScore == 20) {
+            headerResult.innerHTML = `Вы победитель!`;
+            textResult.innerHTML = `Вы набрали  максимальные ${localScore} очков из 20 возможных!`;
+            imgResult.src = 'disco.gif';
+            playResult.innerHTML = 'Сыграть снова';
+            backBtn.innerHTML = 'Главное меню';
+        }
+        else {
+            headerResult.innerHTML = `Поздравляем!`;
+            textResult.innerHTML = `Вы набрали ${localScore} очков из 20 возможных.`;
+            imgResult.src = 'disco.gif';
+            playResult.innerHTML = 'Перезапустить игру';
+            backBtn.innerHTML = 'Главное меню';
         }
     }
-    else if((localStorage.getItem('scoreLocal')) === '20'){
-        headerResult.innerHTML = 'Congratulations!';
-        textResult.innerHTML = `You have scored the maximum ${localStorage.getItem('scoreLocal')} points from 30 possible.`;
-        imgResult.src = 'disco.gif';
-        backBtn.innerHTML = 'Go to start menu';
-        btn = 'back';
-        if((document.querySelector('.result__start'))){
-            containerResult.removeChild(playResult);
-        }
-    }
-    else {
-        headerResult.innerHTML = 'Congratulations!';
-        textResult.innerHTML = `You scored ${localStorage.getItem('scoreLocal')} points out of 20 possible.`;
-        imgResult.src = 'disco.gif';
-        btn = 'play';
-        if((document.querySelector('.backBtn'))){
-            containerResult.removeChild(backBtn);
-        }
-    }
+
     document.body.appendChild(wrapperResult);
     wrapperResult.appendChild(containerResult);
     containerResult.appendChild(headerResult);
     containerResult.appendChild(textResult);
     containerResult.appendChild(imgResult);
-    containerResult.appendChild(imgResult);
-    if(btn === 'play'){
-        containerResult.appendChild(playResult);
-    } else if(btn === 'back'){
-        containerResult.appendChild(backBtn);
-    }
+    containerResult.appendChild(playResult);
+    containerResult.appendChild(backBtn);
+
 
 }
 
 function delResult(){
     document.body.removeChild(wrapperResult);
 }
-
 
 
 
@@ -252,20 +348,31 @@ variantList.innerHTML = `<li class="variant__elem"></li>
 <li class="variant__elem"></li>`;
 yesSong.src = 'yes2.mp3';
 noSong.src = 'no55.mp3';
-nextBtn.innerHTML = 'Next';
-chooseTitle.innerHTML = 'Selected song..';
 sideabarCover.src = 'question.jpg';
-sideabarSongName.innerHTML = 'Listen to the player <br>Choose a song';
 choosePlayBtn.src = 'noplay.svg';
 chooseVolume.type = 'range';
 chooseVolume.id = 'volume';
 chooseVolume.min = '0';
 chooseVolume.max = '100';
-chooseText.innerHTML = 'About song...';
+
 
 
 
 function makeGame() {
+    let langLocal = localStorage.getItem('lang');
+    if(langLocal == 'en'){
+        nextBtn.innerHTML = 'Next';
+        chooseTitle.innerHTML = 'Selected song..';
+        sideabarSongName.innerHTML = 'Listen to the player <br>Choose a song';
+        chooseText.innerHTML = 'About song...';
+    }
+    if(langLocal == 'ru'){
+        nextBtn.innerHTML = 'Следующая';
+        chooseTitle.innerHTML = 'Выбранная песня..';
+        sideabarSongName.innerHTML = 'Включите плеер <br>Выберете песню';
+        chooseText.innerHTML = 'О песне...';
+    }
+    
     document.body.appendChild(wrapperMain);
     wrapperMain.appendChild(headerMain);
     headerMain.appendChild(headerInfoMain);
@@ -315,7 +422,7 @@ function makeGame() {
 
     wrapperMain.appendChild(nextBtn);
 
-    localStorage.setItem('scoreLocal', '');
+
     question = 0;
     score = 0;
     scoreInfoHeader.innerHTML = `Score: ${score}`;
@@ -385,60 +492,16 @@ function makeGame() {
 
     }
 
-    // //progress bar
-    // function updateProgress(e){
-    //     const {duration, currentTime} = e.srcElement;
-
-    //     let a = String(Math.round(currentTime));
-    //     if(a == '30'){
-    //         a = '0';
-    //         document.querySelector('.start').innerHTML = `00:0${a}`;
-    //     } else if (a.length == 2) {
-    //         document.querySelector('.start').innerHTML = `00:${Math.round(currentTime)}`;
-    //     } else if (a.length == 1){
-        
-    //         document.querySelector('.start').innerHTML = `00:0${a}`;
-    //     }
-        
-    //     document.querySelector('.end').innerHTML = Math.round(duration);
-    //     let progresPercent = (currentTime / duration) *100;
-    //     // console.log(progresPercent);
-    //     if(isNaN(progresPercent)){
-    //         progresPercent = 0;
-    //     } else if(progresPercent == 100) {
-    //         progresPercent = 0;
-    //         pauseSong();
-    //     }
-    //     // console.log(progresPercent);
-    //     progress.value = progresPercent;
-    //     let val = progress.value;
-    //     progress.style.background = `-webkit-linear-gradient(left, #c37fff 0%, #c37fff ${val}%, transparent ${val}%, transparent 100%)`;
-
-
-        
-    // }
-
-    // audio.addEventListener('timeupdate', updateProgress);
-
-
-    // // бегунок
-    // function setProgress(e){
-    //     const width = this.clientWidth;
-    //     const clickX = e.offsetX;
-    //     const duration = audio.duration;
-    //     audio.currentTime = (clickX / width) * duration;
-
-        
-    // }
-
-    // progressContainer.addEventListener('click', setProgress);
 
     function changeInput(){
         let val = progress.value;
         progress.style.background = `-webkit-linear-gradient(left, #c37fff 0%, #c37fff ${val}%, transparent ${val}%, transparent 100%)`;
 
     }
+
+
     progress.addEventListener('input', changeInput);
+    
   
 
     
@@ -481,6 +544,7 @@ function makeGame() {
     function soundVolume() {
         let v = this.value;
         audio.volume = v / 100;
+        volumeMain.style.background = `-webkit-linear-gradient(left, #c37fff 0%, #c37fff ${v}%, rgba(109, 109, 109, 0.4) ${v}%, rgba(109, 109, 109, 0.4) 100%)`;
     }
 
     volumeMain.oninput = soundVolume;
@@ -522,7 +586,7 @@ function makeGame() {
             let currentName = songs[question][randomNum].songName;
             let chooseName = elem.innerHTML;
             showSongSidebar(chooseName);
-            makeChooseSong(chooseName);
+            makeChooseSong(chooseName, langLocal);
             if(currentName === chooseName && !(elem.classList.contains('win'))) {
                 rightSong(chooseName);
                 rightAnswer(elem);
@@ -632,7 +696,7 @@ function makeGame() {
             startMainSong();
             makeResult();
             pauseSong();
-            startSideBar();
+            startSideBar(langLocal);
 
         }
         else {
@@ -640,7 +704,7 @@ function makeGame() {
 
             startMainSong();
 
-            startSideBar();
+            startSideBar(langLocal);
 
             pauseSong();
 
@@ -663,22 +727,30 @@ function makeGame() {
     // Переключение вопроса
 
     //функция по запуску песни choose
-    function makeChooseSong(elem) {
+    function makeChooseSong(elem, langLocal) {
         showChooseSong();
         chooseAudio.src = `assets/music/${yearsArr[question]}/cut/${elem}.mp3`;
 
         for(let i = 0; i < songs[question].length - 1; i++) {
             if(elem === songs[question][i].songName){
-                chooseText.innerHTML = songs[question][i].en;
+
+                chooseText.innerHTML = songs[question][i][langLocal];
             }
         }
 
     }
 
-    function startSideBar() {
-        sideabarSongName.innerHTML = 'Listen to the player <br>Choose a song';
+    function startSideBar(langLocal) {
+        if(langLocal == 'en'){
+            sideabarSongName.innerHTML = 'Listen to the player <br>Choose a song';
+            chooseText.innerHTML = 'About song...';
+        }
+        if(langLocal == 'ru'){
+            sideabarSongName.innerHTML = 'Включите плеер <br>Выберете песню';
+            chooseText.innerHTML = 'О песне...';
+        }
+
         sideabarCover.src = 'question.jpg';
-        chooseText.innerHTML = 'About song';
         chooseAudio.src = '';
         choosePlayBtn.src = 'noplay.svg';
         choosePlayBtn.style.pointerEvents = 'none';
@@ -755,10 +827,63 @@ function delGame() {
 }
 
 
+////////////// about
+
+const aboutWrapper = document.createElement('div');
+const aboutLogo = document.createElement('img');
+const aboutContent = document.createElement('div');
+const aboutHeader = document.createElement('p');
+const aboutText = document.createElement('p');
+const aboutBtn = document.createElement('button');
+
+aboutWrapper.classList.add('about__wrapper');
+aboutLogo.classList.add('about__logo');
+aboutContent.classList.add('about__content');
+aboutHeader.classList.add('about__header');
+aboutText.classList.add('about__text');
+aboutBtn.classList.add('about__btn');
+
+aboutLogo.src = 'song.png';
 
 
+function makeAbout() {
+    let localLang = localStorage.getItem('lang');
 
+    if(localLang == 'en'){
+        aboutHeader.innerHTML = 'Rules of the game';
+        aboutText.innerHTML = `You need to listen to the song and select it from the list. The number of points received depends on the number of attempts:</br>
+        1 attempt - 5 points;</br>
+        2 attempts - 4 points;</br>
+        3 attempts - 3 points;</br>
+        4 attempts - 2 points;</br>
+        5 attempts - 1 point;</br>
+        6 attempts - 0 points.`;
+        aboutBtn.innerHTML = 'Main menu';
+    }
+    if(localLang == 'ru'){
+        aboutHeader.innerHTML = 'Правила игры';
+        aboutText.innerHTML = `Необходимо прослушать песню и выбрать её в списке. Количество полученных баллов зависит от количества попыток:</br>
+        1 попытка - 5 баллов;</br>
+        2 попытки - 4 балла;</br>
+        3 попытки - 3 балла;</br>
+        4 попытки - 2 балла;</br>
+        5 попыток - 1 балл;</br>
+        6 попыток - 0 баллов.`;
+        aboutBtn.innerHTML = 'Главное меню';
+    }
 
+    document.body.appendChild(aboutWrapper);
+    aboutWrapper.appendChild(aboutLogo);
+    aboutWrapper.appendChild(aboutContent);
+    aboutContent.appendChild(aboutHeader);
+    aboutContent.appendChild(aboutText);
+    aboutContent.appendChild(aboutBtn);
+
+}
+
+function delAbout() {
+    document.body.removeChild(aboutWrapper);
+}
 
 
 
@@ -775,14 +900,33 @@ buttonResultMain.addEventListener('click', () => {
 backBtn.addEventListener('click', () => {
     delResult();
     makeStart();
-})
+});
 
 playResult.addEventListener('click', () => {
     delResult();
     makeGame();
+});
+
+buttonLanguageMain.addEventListener('click', () => {
+    delStart();
+    makeLanguage();
+});
+
+backLanguage.addEventListener('click', () => {
+    delLanguage();
+    makeStart();
+
 })
 
+buttonAboutMain.addEventListener('click', () => {
+    delStart();
+    makeAbout();
+});
 
+aboutBtn.addEventListener('click', ()=> {
+    delAbout();
+    makeStart();
+})
 
 
 //footer
@@ -818,54 +962,3 @@ playResult.addEventListener('click', () => {
 
 
 
-
-let lang;
-
-if (!(localStorage.getItem('lang'))){
-    console.log('hi');
-} else {
-    lang = localStorage.getItem('lang');
-    changeLang(lang);
-}
-
-const ru = document.querySelector('.ru');
-const en = document.querySelector('.en');
-
-ru.addEventListener('click', () => {
-    localStorage.setItem('lang', 'ru');
-    lang = localStorage.getItem('lang');
-    changeLang(lang);
-})
-en.addEventListener('click', () => {
-    localStorage.setItem('lang', 'en');
-    lang = localStorage.getItem('lang');
-    changeLang(lang);
-})
-
-
-function changeLang(lang){
-    if(lang == 'ru'){
-        console.log('русский');
-        buttonStartMain.innerHTML = 'Старт';
-        buttonResultMain.innerHTML = 'Результат';
-        buttonGalleryMain.innerHTML = 'Галерея';
-        buttonAboutMain.innerHTML = 'Об игре';
-        chooseTitle.innerHTML = 'Выберете песню..';
-        sideabarSongName.innerHTML = 'Включите плеер <br>Выберете песню';
-        chooseText.innerHTML = 'О песне...';
-        scoreInfoHeader.innerHTML = `Результат: ${score}`;
-    }
-    if (lang == 'en'){
-        console.log('английский');
-        buttonStartMain.innerHTML = 'Start';
-        buttonResultMain.innerHTML = 'Result';
-        buttonGalleryMain.innerHTML = 'Gallery';
-        buttonAboutMain.innerHTML = 'About';
-        chooseTitle.innerHTML = 'Selected song..';
-        sideabarSongName.innerHTML = 'Listen to the player <br>Choose a song';
-        chooseText.innerHTML = 'About song...';
-        scoreInfoHeader.innerHTML = `Score: ${score}`;
-        
-        
-    }
-}
