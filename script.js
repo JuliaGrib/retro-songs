@@ -240,16 +240,16 @@ function makeResult(){
             playResult.innerHTML = 'Start game';
             backBtn.innerHTML = 'Main menu';
         }
-        else if (localScore == '20' || localScore == 20) {
+        else if (localScore == '30' || localScore == 30) {
             headerResult.innerHTML = `You are the winner!`;
-            textResult.innerHTML = `You scored the maximum ${localScore} points out of 20 possible!`;
+            textResult.innerHTML = `You scored the maximum ${localScore} points out of 30 possible!`;
             imgResult.src = 'disco.gif';
             playResult.innerHTML = 'Play again';
             backBtn.innerHTML = 'Main menu';
         }
         else {
             headerResult.innerHTML = `Congratulations!`;
-            textResult.innerHTML = `You scored  ${localScore} points out of 20 possible.`;
+            textResult.innerHTML = `You scored  ${localScore} points out of 30 possible.`;
             imgResult.src = 'disco.gif';
             playResult.innerHTML = 'Restart game';
             backBtn.innerHTML = 'Main menu';
@@ -264,16 +264,16 @@ function makeResult(){
             playResult.innerHTML = 'Начать игру';
             backBtn.innerHTML = 'Главное меню';
         }
-        else if (localScore == '20' || localScore == 20) {
+        else if (localScore == '30' || localScore == 30) {
             headerResult.innerHTML = `Вы победитель!`;
-            textResult.innerHTML = `Вы набрали  максимальные ${localScore} очков из 20 возможных!`;
+            textResult.innerHTML = `Вы набрали  максимальные ${localScore} очков из 30 возможных!`;
             imgResult.src = 'disco.gif';
             playResult.innerHTML = 'Сыграть снова';
             backBtn.innerHTML = 'Главное меню';
         }
         else {
             headerResult.innerHTML = `Поздравляем!`;
-            textResult.innerHTML = `Вы набрали ${localScore} очков из 20 возможных.`;
+            textResult.innerHTML = `Вы набрали ${localScore} очков из 30 возможных.`;
             imgResult.src = 'disco.gif';
             playResult.innerHTML = 'Перезапустить игру';
             backBtn.innerHTML = 'Главное меню';
@@ -416,7 +416,9 @@ logoImgMain.src = 'song.png';
 ulHeader.innerHTML = `<li class="header__elem">60's</li>
 <li class="header__elem">70's</li>
 <li class="header__elem">80's</li>
-<li class="header__elem">90's</li>`;
+<li class="header__elem">90's</li>
+<li class="header__elem">00's</li>
+<li class="header__elem">10's</li>`;
 coverMain.src = 'question.jpg';
 title.innerHTML = '***';
 playBtn.src = 'play.svg';
