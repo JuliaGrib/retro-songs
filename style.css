@@ -34,7 +34,7 @@ body {
     align-items: center;
 
     padding: 20px;
-    margin: 50px auto 0;
+    margin: 50px auto 50px;
     /* max-width: 300px; */
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
@@ -765,6 +765,7 @@ padding-top: 20px;
 
 .song__cover {
     width: 200px;
+    height: 200px;
 }
 .gallery__logo {
     
@@ -792,8 +793,8 @@ padding-top: 20px;
 
 .song__descr {
     margin-top: 15px;
-    /* height: 100px;
-    overflow-y: scroll; */
+    height: 100px;
+    overflow-y: scroll;
     -ms-overflow-style: none; 
     overflow: -moz-scrollbars-none;
 }
@@ -845,13 +846,29 @@ padding-top: 20px;
         font-size: 15px;
         font-weight: 500;
     }
+    .result__header {
+        font-size: 19px;
+        margin-bottom: 15px;
+    }
+    .result__text {
+        font-size: 15px;
+    }
+    .result__img {
+        margin-top: 20px;
+        width: 64px;
+    }
+    .wrapper__start, .wrapper__language, .about__wrapper {
+        position: absolute;
+        top: 10%;
+        transform: translate(-50%, 0%);
+    }
 }
 
 @media (max-width: 375px){
     .logo__start, .logo__language, .about__logo {
         max-width: 250px;
     }
-    .btn__start, .btn__result, .btn__gallery, .btn__about, .result__start, .language__main, .back__language, .about__btn {
+    .btn__start, .btn__result, .btn__gallery, .btn__about, .result__start, .language__main, .back__language, .about__btn, .backBtn {
         width: 200px;
         font-size: 16px;
     }
@@ -868,5 +885,38 @@ padding-top: 20px;
     }
     .logo__img {
         width: 170px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .song__head {
+        font-size: 16px;
+    }
+    .song__text {
+        font-size: 14px;
+    }
+    .song__cover {
+        width: 158px;
+        height: 158px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .song__descr {
+        height: 85px;
+    }
+}
+@media (max-width: 800px) {
+    .song__descr {
+        height: 85px;
+    }
+    .song__wrap {
+        flex-direction: column;
+    }
+    .song__cover {
+        margin: 0 auto;
+    }
+    .song__inf {
+        margin: 20px 0;
     }
 }
