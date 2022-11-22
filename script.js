@@ -356,7 +356,7 @@ const choosePlayer = document.createElement('div');
 const chooseControl = document.createElement('div');
 const choosePlayBtn = document.createElement('img');
 const chooseAudio = document.createElement('audio');
-const chooseProgressContainer = document.createElement('choose__progress__container');
+const chooseProgressContainer = document.createElement('div');
 const chooseProgress = document.createElement('div');
 const chooseRangeWrapper = document.createElement('div');
 const chooseVolume = document.createElement('input');
@@ -412,7 +412,6 @@ chooseText.classList.add('choose__text');
 
 
 logoImgMain.src = 'song.png';
-// scoreInfoHeader.innerHTML = 'Score: 0';
 ulHeader.innerHTML = `<li class="header__elem">60's</li>
 <li class="header__elem">70's</li>
 <li class="header__elem">80's</li>
@@ -516,7 +515,12 @@ function makeGame() {
 
     question = 0;
     score = 0;
-    scoreInfoHeader.innerHTML = `Score: ${score}`;
+    if(langLocal == 'en'){
+        scoreInfoHeader.innerHTML = `Score: ${score}`;
+    }
+    if (langLocal == 'ru'){
+        scoreInfoHeader.innerHTML = `Счет: ${score}`;
+    }
     const yearsList = document.querySelectorAll('.header__elem');
     const variantElem = document.querySelectorAll('.variant__elem');
     variantElem.forEach(elem => {
@@ -707,27 +711,57 @@ function makeGame() {
         });
         if(arr.length == 0) {
             score += 5;
-            scoreInfoHeader.innerHTML = `Score: ${score}`
+            if(langLocal == 'en'){
+                scoreInfoHeader.innerHTML = `Score: ${score}`;
+            }
+            if (langLocal == 'ru'){
+                scoreInfoHeader.innerHTML = `Счет: ${score}`;
+            }
         }
         else if (arr.length == 1) {
             score += 4;
-            scoreInfoHeader.innerHTML = `Score: ${score}`
+            if(langLocal == 'en'){
+                scoreInfoHeader.innerHTML = `Score: ${score}`;
+            }
+            if (langLocal == 'ru'){
+                scoreInfoHeader.innerHTML = `Счет: ${score}`;
+            }
         }
         else if (arr.length == 2) {
             score += 3;
-            scoreInfoHeader.innerHTML = `Score: ${score}`
+            if(langLocal == 'en'){
+                scoreInfoHeader.innerHTML = `Score: ${score}`;
+            }
+            if (langLocal == 'ru'){
+                scoreInfoHeader.innerHTML = `Счет: ${score}`;
+            }
         }
         else if (arr.length == 3) {
             score += 2;
-            scoreInfoHeader.innerHTML = `Score: ${score}`
+            if(langLocal == 'en'){
+                scoreInfoHeader.innerHTML = `Score: ${score}`;
+            }
+            if (langLocal == 'ru'){
+                scoreInfoHeader.innerHTML = `Счет: ${score}`;
+            }
         }
         else if (arr.length == 4) {
             score += 1;
-            scoreInfoHeader.innerHTML = `Score: ${score}`
+            if(langLocal == 'en'){
+                scoreInfoHeader.innerHTML = `Score: ${score}`;
+            }
+            if (langLocal == 'ru'){
+                scoreInfoHeader.innerHTML = `Счет: ${score}`;
+            }
         }
         else if (arr.length == 5) {
             score += 0;
-            scoreInfoHeader.innerHTML = `Score: ${score}`
+            if(langLocal == 'en'){
+                scoreInfoHeader.innerHTML = `Score: ${score}`;
+            }
+            if (langLocal == 'ru'){
+                scoreInfoHeader.innerHTML = `Счет: ${score}`;
+            }
         }
         
         for(let i = 0; i < variantElem.length; i++){
