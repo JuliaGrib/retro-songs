@@ -370,7 +370,7 @@ const songs = [
             songName: `Stronger - Kanye West`,
             songSrc: `assets/music/00/cut/Stronger - Kanye West.mp3`,
             songImg: `assets/img/00/Stronger - Kanye West.jpg`,
-            en: `На обложке изображен символ Уэста — плюшевый мишка, находеты такие же очки как у Канье в клипе. Уэст исполнил частичную версию этой песни 1 июля 2007 года, на концерте в честь Принцессы Дианы на стадионе Уэмбли. 63 000 человек были на стадионе, а примерно 500 миллионов в более чем 140 странах — смотрели это мероприятие по телевизору.`,
+            en: `The cover features West's symbol, a teddy bear, and the same glasses as Kanye's in the video. West performed a partial version of this song on July 1, 2007, at a tribute concert for Princess Diana at Wembley Stadium. 63,000 people were in the stadium, and approximately 500 million in more than 140 countries watched the event on TV.`,
             ru: `На обложке изображён символ Уэста — плюшевый мишка, на котором надеты такие же очки как у Канье в клипе. Уэст исполнил частичную версию этой песни 1 июля 2007 года, на концерте в честь Принцессы Дианы на стадионе Уэмбли. 63 000 человек были на стадионе, а примерно 500 миллионов в более чем 140 странах — смотрели это мероприятие по телевизору.`,
         }, 
         {
