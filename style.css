@@ -920,3 +920,9 @@ padding-top: 20px;
         margin: 20px 0;
     }
 }
+
+.gallery__line {
+    padding: 20px 0 0 0;
+    width: 50px;
+    cursor: pointer;
+}

@@ -1,5 +1,5 @@
 
-console.log('Привет друг, я не успела доделать все что хотела, поэтому не проверяй мою работу пожалуйста раньше 24го числа. Спасибо!!!!!!!!!')
+
 var lang;
 
 if (!(localStorage.getItem('lang'))){
@@ -678,6 +678,7 @@ function makeGame() {
     variantElem.forEach(elem => {
         elem.addEventListener('click', () => {
             chooseProgress.style.width = '0px';
+            chooseControl.classList.remove('play');
             let currentName = songs[question][randomNum].songName;
             let chooseName = elem.innerHTML;
             showSongSidebar(chooseName);
@@ -1092,23 +1093,25 @@ aboutBtn.addEventListener('click', ()=> {
 /// gallery
 
 const galleryWrapper = document.createElement('div');
+const galleryLine = document.createElement('img');
 const galleryLogo = document.createElement('img');
 const galleryContent = document.createElement('div');
 let audioTest = document.createElement('audio');
 
 galleryWrapper.classList.add('gallery__wrapper');
+galleryLine.classList.add('gallery__line');
 galleryLogo.classList.add('gallery__logo');
 
 galleryLogo.src = 'song.png';
+galleryLine.src = 'back.svg';
 
 
 function makeGallery() {
     let localLang = localStorage.getItem('lang');
     
-
-
     document.body.appendChild(galleryWrapper);
     galleryWrapper.appendChild(galleryLogo);
+    galleryWrapper.appendChild(galleryLine);
     galleryWrapper.appendChild(audioTest);
     galleryWrapper.appendChild(galleryContent);
 
@@ -1189,10 +1192,24 @@ function makeGallery() {
 
 }
 
-
+function delGallery() {
+    document.body.removeChild(galleryWrapper);
+}
 
 
 buttonGalleryMain.addEventListener('click', () => {
     delStart();
     makeGallery();
+})
+
+galleryLine.addEventListener('click', () => {
+    let a = document.querySelector('.playSong');
+    if(a) {
+        a.classList.remove('playSong');
+        a.src = 'play.svg';
+
+    }
+    delGallery();
+    makeStart();
+    
 })
