@@ -940,10 +940,10 @@ function makeGame() {
     function chooseSoundVolume() {
         let v = this.value;
         chooseAudio.volume = v / 100;
-    }
+        chooseVolume.style.background = `-webkit-linear-gradient(left, #c37fff 0%, #c37fff ${v}%, rgba(109, 109, 109, 0.4) ${v}%, rgba(109, 109, 109, 0.4) 100%)`;
+        }
     
     chooseVolume.oninput = chooseSoundVolume;
-
 
 }
 

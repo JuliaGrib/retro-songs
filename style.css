@@ -587,13 +587,13 @@ padding-top: 20px;
 
 
 .choose__range {
-    margin: 10px 0 0 0;
+    margin: 20px 0 0 0;
 
-    background-color: rgba(109, 109, 109, 0.4);
+    background:-webkit-linear-gradient(left, #c37fff 0%, #c37fff 50%, rgba(109, 109, 109, 0.4) 50%, rgba(109, 109, 109, 0.4) 100%);
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 150px;
+    width: 180px;
     height: 7px;
     border-radius: 5px;
 }
@@ -605,6 +605,7 @@ padding-top: 20px;
     border-radius: 50%;
     background: #c37fff;
     cursor: pointer;
+    
 }
 
 .choose__range::-webkit-slider-thumb {
